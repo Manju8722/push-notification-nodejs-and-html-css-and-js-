@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notification Example</title>
+</head>
+<body>
+  <button id="notifyBtn">Notify Me</button>
+  <script>
+    document.getElementById('notifyBtn').addEventListener('click', () => {
+      if ('Notification' in window) {
+        
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            const options = {
+              body: 'This is a notification from this tab!',
+              icon: 'icon.png'
+            };
+            new Notification('Hello!', options);
+          }          
+        });
+      }
+    });
+  </script>
+</body>
+</html>
